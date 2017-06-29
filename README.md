@@ -1,24 +1,24 @@
-##项目框架
+## 项目框架
 
 SpringMVC+MyBatis+SQLite
 
-###IDE
+### IDE
 
 Intellij IDEA
 
-####项目结构
+#### 项目结构
 
 ![](image/project.png)
 
-####数据库结构
+#### 数据库结构
 
 ![](image/数据库结构.PNG)
 
-####领域模型
+#### 领域模型
 
 ![](image/diagram.png)
 
-##运行截图
+## 运行截图
 
 - 登录
 
