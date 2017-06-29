@@ -1,8 +1,9 @@
 package com.github.mahui53541.scsms.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Course {
+public class Course{
 	private String number;
 	private String name;
 	private double credits;//学分

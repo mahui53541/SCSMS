@@ -1,5 +1,6 @@
 package com.github.mahui53541.scsms.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -13,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Component
 @Transactional(propagation=Propagation.REQUIRED,isolation=Isolation.DEFAULT)
-public class ProfessorCatalog {
+public class ProfessorCatalog{
 	private ArrayList<Professor> professorCatalog;
 	public ProfessorCatalog() {
 		professorCatalog = new ArrayList<Professor>();

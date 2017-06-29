@@ -1,5 +1,6 @@
 package com.github.mahui53541.scsms.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 

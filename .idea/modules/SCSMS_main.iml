@@ -3,14 +3,12 @@
   <component name="FacetManager">
     <facet type="web" name="Web Gradle : SCSMS-1.0-SNAPSHOT.war">
       <configuration>
+        <descriptors>
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/../../src/main/webapp/WEB-INF/web.xml" />
+        </descriptors>
         <webroots>
           <root url="file://$MODULE_DIR$/../../src/main/webapp" relative="/" />
         </webroots>
-        <sourceRoots>
-          <root url="file://$MODULE_DIR$/../../db" />
-          <root url="file://$MODULE_DIR$/../../src/main/java" />
-          <root url="file://$MODULE_DIR$/../../src/main/resources" />
-        </sourceRoots>
       </configuration>
     </facet>
   </component>
@@ -18,7 +16,7 @@
     <output url="file://$MODULE_DIR$/../../build/classes/main" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../db">
-      <sourceFolder url="file://$MODULE_DIR$/../../db/s" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../db" type="java-resource" />
     </content>
     <content url="file://$MODULE_DIR$/../../src/main">
       <sourceFolder url="file://$MODULE_DIR$/../../src/main/java" isTestSource="false" />
@@ -41,8 +39,8 @@
     <orderEntry type="library" name="Gradle: org.mybatis:mybatis:3.4.1" level="project" />
     <orderEntry type="library" name="Gradle: org.mybatis:mybatis-spring:1.3.1" level="project" />
     <orderEntry type="library" name="Gradle: com.github.pagehelper:pagehelper:5.0.1" level="project" />
-    <orderEntry type="library" name="Gradle: com.mchange:c3p0:0.9.5.2" level="project" />
-    <orderEntry type="library" name="Gradle: com.mchange:mchange-commons-java:0.2.11" level="project" />
+    <orderEntry type="library" name="Gradle: com.alibaba:druid:1.0.29" level="project" />
+    <orderEntry type="library" name="Gradle: org.xerial:sqlite-jdbc:3.16.1" level="project" />
     <orderEntry type="library" name="Gradle: com.alibaba:fastjson:1.2.31" level="project" />
     <orderEntry type="library" name="Gradle: commons-io:commons-io:2.5" level="project" />
     <orderEntry type="library" name="Gradle: commons-codec:commons-codec:1.10" level="project" />

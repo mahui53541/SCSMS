@@ -24,12 +24,12 @@ public interface CourseDao {
 		@Result(column="name",property="name"),
 		@Result(column="credits",property="credits"),
 		@Result(column="number",property="prevCourse",
-			many=@Many(select="com.srs.dao.CourseDao.selectPrevCourseByNumber",
+			many=@Many(select="com.github.mahui53541.scsms.dao.CourseDao.selectPrevCourseByNumber",
 				fetchType=FetchType.EAGER))
 	})
 	ArrayList<Course> load();
 	
-	@Select("select * from course where number in (select pev_course_number from prevcourse where course_number =#{number})")
+	@Select("select * from course where number in (select distinct pev_course_number from prevcourse where course_number =#{number})")
 	@Results({
 		@Result(id=true,column="number",property="number"),
 		@Result(column="name",property="name"),
@@ -43,7 +43,7 @@ public interface CourseDao {
 		@Result(column="name",property="name"),
 		@Result(column="credits",property="credits"),
 		@Result(column="number",property="prevCourse",
-			many=@Many(select="com.srs.dao.CourseDao.selectPrevCourseByNumber",
+			many=@Many(select="com.github.mahui53541.scsms.dao.CourseDao.selectPrevCourseByNumber",
 				fetchType=FetchType.LAZY))
 	})
 	Course selectCourseByNum(String number);
@@ -63,7 +63,7 @@ public interface CourseDao {
 		@Result(column="name",property="name"),
 		@Result(column="credits",property="credits"),
 		@Result(column="number",property="prevCourse",
-			many=@Many(select="com.srs.dao.CourseDao.selectPrevCourseByNumber",
+			many=@Many(select="com.github.mahui53541.scsms.CourseDao.selectPrevCourseByNumber",
 				fetchType=FetchType.LAZY))
 	})
 	ArrayList<Course> selectByStudentSn(String ssn);

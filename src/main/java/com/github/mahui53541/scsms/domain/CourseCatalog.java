@@ -1,5 +1,6 @@
 package com.github.mahui53541.scsms.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -15,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.github.mahui53541.scsms.dao.CourseDao;
 @Component
 @Transactional(propagation=Propagation.REQUIRED,isolation=Isolation.DEFAULT)
-public class CourseCatalog {
+public class CourseCatalog{
 	private ArrayList<Course> courseCatalog;
 	private HashMap<String,Course> map;
 	public CourseCatalog() {

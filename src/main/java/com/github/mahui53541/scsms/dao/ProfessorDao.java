@@ -32,6 +32,7 @@ public interface ProfessorDao {
 		fetchType=FetchType.EAGER))*/
 	})
 	ArrayList<Professor> load();
+
 	@Select("select * from professor where ssn=#{ssn}")
 	@Results({
 		@Result(id=true,column="ssn",property="ssn"),
@@ -40,6 +41,7 @@ public interface ProfessorDao {
 		@Result(column="department",property="department")
 	})
 	Professor selectProfessorBySsn(@Param("ssn") String ssn);
+
 	@Delete("delete from professor where ssn=#{ssn}")
 	void deleteProfessor(String ssn);
 	

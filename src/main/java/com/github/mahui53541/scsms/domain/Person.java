@@ -1,7 +1,10 @@
 package com.github.mahui53541.scsms.domain;
 
-public abstract class Person {
+import java.io.Serializable;
+
+public abstract class Person{
 	private String ssn;
+
 	private String name;
 	
 	public Person() {
@@ -14,7 +17,6 @@ public abstract class Person {
 		this.ssn = ssn;
 		this.name = name;
 	}
-
 	public String getSsn() {
 		return ssn;
 	}

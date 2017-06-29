@@ -1,5 +1,6 @@
 package com.github.mahui53541.scsms.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -14,34 +15,37 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Component
 @Transactional(propagation=Propagation.REQUIRED,isolation=Isolation.DEFAULT)
-public class Transcript {
+public class Transcript{
 	private HashMap<String,ArrayList<TranscriptEntity>> map;
 	public Transcript() {
 		super();
-		// TODO Auto-generated constructor stub
 		map=new HashMap<String,ArrayList<TranscriptEntity>>();
 	}
 	@PostConstruct
 	public void init(){
 		ArrayList<TranscriptEntity> list=load();
-		int size=list.size();
+		//int size=list.size();
 		HashMap<String,ArrayList<TranscriptEntity>> hashmap=new HashMap<String,ArrayList<TranscriptEntity>>();
-		for(int i=0;i<size;i++){
-			String ssn=list.get(i).getStudent().getSsn();
-			if(hashmap.get(ssn)==null){
-				ArrayList<TranscriptEntity> transcript=new ArrayList<TranscriptEntity>();
-				transcript.add(list.get(i));
-				hashmap.put(ssn, transcript);
-			}else{
-				hashmap.get(ssn).add(list.get(i));
+		for(TranscriptEntity t:list){
+			try {
+				String ssn=t.getStudent().getSsn();
+				if(hashmap.get(ssn)==null){
+					ArrayList<TranscriptEntity> transcript=new ArrayList<TranscriptEntity>();
+					transcript.add(t);
+					hashmap.put(ssn, transcript);
+				}else{
+					hashmap.get(ssn).add(t);
+				}
+			}catch (Exception e){
+				continue;
 			}
+
 		}
 		this.map=hashmap;
 	}
 	@Autowired
 	private TranscriptDao transcriptDao;
 	private ArrayList<TranscriptEntity> load() {
-		// TODO Auto-generated method stub
 		ArrayList<TranscriptEntity> list=transcriptDao.load();
 		return list;
 	}

@@ -1,5 +1,6 @@
 package com.github.mahui53541.scsms.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -16,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Component
 @Transactional(propagation=Propagation.REQUIRED,isolation=Isolation.DEFAULT)
-public class SectionCatalog {	
+public class SectionCatalog{
 	private ArrayList<Section> sectionCatalog;
 	private HashMap<String,Section> map;
 	public SectionCatalog(ArrayList<Section> sectionCatalog,HashMap<String,Section> map) {
@@ -45,7 +46,6 @@ public class SectionCatalog {
 		this.map=hashmap;
 	}
 	private ArrayList<Section> load() {
-		// TODO Auto-generated method stub
 		ArrayList<Section> list=sectionDao.load();
 		return list;
 	}

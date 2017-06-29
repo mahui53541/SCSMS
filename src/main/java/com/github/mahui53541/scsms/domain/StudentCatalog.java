@@ -1,5 +1,6 @@
 package com.github.mahui53541.scsms.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -15,7 +16,7 @@ import com.github.mahui53541.scsms.dao.StudentDao;
 
 @Component
 @Transactional(propagation=Propagation.REQUIRED,isolation=Isolation.DEFAULT)
-public class StudentCatalog {
+public class StudentCatalog{
 	private ArrayList<Student> studentCatalog;
 	private HashMap<String,Student> map;
 	public StudentCatalog() {

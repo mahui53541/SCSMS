@@ -33,16 +33,23 @@ public interface StudentDao {
 	Student selectBySsnAndPassword(@Param("ssn") String ssn, @Param("password") String password);
 	
 	@Select("select * from student where ssn in (select student_ssn from transcriptentity where sectionNo=#{sectionNo})")
+	@Results({
+			@Result(id=true,column="ssn" ,property="ssn"),
+			@Result(column="name" ,property="name"),
+			@Result(column="degree" ,property="degree"),
+			@Result(column="major" ,property="major"),
+			@Result(column="password" ,property="password")
+	})
 	ArrayList<Student> selectStudentBySectionNo(int sectionNo);
 	
 	@Select("select * from student")
 	@Results({
 		@Result(id=true,column="ssn" ,property="ssn"),
 		@Result(column="ssn" , property="attends",
-				many=@Many(select="com.srs.dao.SectionDao.selectByStudentSn",
+				many=@Many(select="com.github.mahui53541.scsms.dao.SectionDao.selectByStudentSn",
 						fetchType=FetchType.LAZY)),
 		@Result(column="ssn" , property="planOfStudy",
-		many=@Many(select="com.srs.dao.CourseDao.selectByStudentSn",
+		many=@Many(select="com.github.mahui53541.scsms.dao.CourseDao.selectByStudentSn",
 				fetchType=FetchType.LAZY)),
 		
 	})
@@ -52,10 +59,10 @@ public interface StudentDao {
 	@Results({
 		@Result(id=true,column="ssn" ,property="ssn"),
 		@Result(column="ssn" , property="attends",
-				many=@Many(select="com.srs.dao.SectionDao.selectByStudentSn",
+				many=@Many(select="com.github.mahui53541.scsms.dao.SectionDao.selectByStudentSn",
 						fetchType=FetchType.LAZY)),
 		@Result(column="ssn" , property="planOfStudy",
-		many=@Many(select="com.srs.dao.CourseDao.selectByStudentSn",
+		many=@Many(select="com.github.mahui53541.scsms.dao.CourseDao.selectByStudentSn",
 				fetchType=FetchType.LAZY))
 	})
 	Student selectBySsn(String ssn);

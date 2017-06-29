@@ -18,7 +18,7 @@ public interface SectionDao {
 		@Result(column="room",property="room"),
 		@Result(column="capacity",property="capacity"),*/
 		@Result(column="course_number",property="course",
-		one=@One(select="com.srs.dao.CourseDao.selectCourseByNum",
+		one=@One(select="com.github.mahui53541.scsms.dao.CourseDao.selectCourseByNum",
 				fetchType=FetchType.LAZY))
 	})
 	ArrayList<Section> selectByProfessorSsn(String ssn);
@@ -27,13 +27,13 @@ public interface SectionDao {
 	@Results({
 		@Result(id=true,column="sectionNo",property="sectionNo"),
 		@Result(column="course_number",property="course",
-		one=@One(select="com.srs.dao.CourseDao.selectCourseByNum",
+		one=@One(select="com.github.mahui53541.scsms.dao.CourseDao.selectCourseByNum",
 				fetchType=FetchType.EAGER)),
 		@Result(column="professor_sn",property="professor",
-		one=@One(select="com.srs.dao.ProfessorDao.selectProfessorBySsn",
+		one=@One(select="com.github.mahui53541.scsms.dao.ProfessorDao.selectProfessorBySsn",
 				fetchType=FetchType.EAGER)),
 		@Result(column="sectionNo",property="enrolledStudents",
-		many=@Many(select="com.srs.dao.StudentDao.selectStudentBySectionNo",
+		many=@Many(select="com.github.mahui53541.scsms.dao.StudentDao.selectStudentBySectionNo",
 				fetchType=FetchType.LAZY))
 	})
 	ArrayList<Section> load();
@@ -42,13 +42,13 @@ public interface SectionDao {
 	@Results({
 		@Result(id=true,column="sectionNo",property="sectionNo"),
 		@Result(column="course_number",property="course",
-		one=@One(select="com.srs.dao.CourseDao.selectCourseByNum",
+		one=@One(select="com.github.mahui53541.scsms.dao.CourseDao.selectCourseByNum",
 				fetchType=FetchType.EAGER)),
 		@Result(column="professor_sn",property="professor",
-		one=@One(select="com.srs.dao.ProfessorDao.selectProfessorBySsn",
+		one=@One(select="com.github.mahui53541.scsms.dao.ProfessorDao.selectProfessorBySsn",
 				fetchType=FetchType.EAGER)),
 		@Result(column="sectionNo",property="enrolledStudents",
-		many=@Many(select="com.srs.dao.StudentDao.selectStudentBySectionNo",
+		many=@Many(select="com.github.mahui53541.scsms.dao.StudentDao.selectStudentBySectionNo",
 				fetchType=FetchType.LAZY))
 	})
 	ArrayList<Section> selectByStudentSn(String ssn);
@@ -57,13 +57,13 @@ public interface SectionDao {
 	@Results({
 		@Result(id=true,column="sectionNo",property="sectionNo"),
 		@Result(column="course_number",property="course",
-		one=@One(select="com.srs.dao.CourseDao.selectCourseByNum",
+		one=@One(select="com.github.mahui53541.scsms.dao.CourseDao.selectCourseByNum",
 				fetchType=FetchType.EAGER)),
 		@Result(column="professor_sn",property="professor",
-		one=@One(select="com.srs.dao.ProfessorDao.selectProfessorBySsn",
+		one=@One(select="com.github.mahui53541.scsms.dao.ProfessorDao.selectProfessorBySsn",
 				fetchType=FetchType.EAGER)),
 		@Result(column="sectionNo",property="enrolledStudents",
-		many=@Many(select="com.srs.dao.StudentDao.selectStudentBySectionNo",
+		many=@Many(select="com.github.mahui53541.scsms.dao.StudentDao.selectStudentBySectionNo",
 				fetchType=FetchType.LAZY))
 	})
 	Section selectBySectionNo(int sectionNo);

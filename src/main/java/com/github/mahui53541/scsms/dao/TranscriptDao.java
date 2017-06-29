@@ -18,10 +18,10 @@ public interface TranscriptDao {
 		@Result(id=true,column="id",property="id"),
 		@Result(column="grade",property="grade"),
 		@Result(column="student_ssn",property="student",
-		one=@One(select="com.srs.dao.StudentDao.selectBySsn",
+		one=@One(select="com.github.mahui53541.scsms.dao.StudentDao.selectBySsn",
 				fetchType=FetchType.EAGER)),
 		@Result(column="sectionNo",property="section",
-		one=@One(select="com.srs.dao.SectionDao.selectBySectionNo",
+		one=@One(select="com.github.mahui53541.scsms.dao.SectionDao.selectBySectionNo",
 		fetchType=FetchType.EAGER))
 	})
 	ArrayList<TranscriptEntity> load();

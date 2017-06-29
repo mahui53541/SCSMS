@@ -1,5 +1,6 @@
 package com.github.mahui53541.scsms.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Professor extends Person{
@@ -9,11 +10,9 @@ public class Professor extends Person{
 	
 	public Professor() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public Professor(String ssn, String name) {
 		super(ssn, name);
-		// TODO Auto-generated constructor stub
 	}
 	public Professor(String name,String ssn,String title, String department) {
 		super(name,ssn);

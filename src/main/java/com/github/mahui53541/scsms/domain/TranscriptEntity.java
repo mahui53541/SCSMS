@@ -1,6 +1,8 @@
 package com.github.mahui53541.scsms.domain;
 
-public class TranscriptEntity {
+import java.io.Serializable;
+
+public class TranscriptEntity{
 	private int id;
 	private double grade;
 	private Student student;
@@ -8,7 +10,6 @@ public class TranscriptEntity {
 	
 	public TranscriptEntity() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public TranscriptEntity(double grade, Student student, Section section) {

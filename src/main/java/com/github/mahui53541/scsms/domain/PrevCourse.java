@@ -1,6 +1,8 @@
 package com.github.mahui53541.scsms.domain;
 
-public class PrevCourse {
+import java.io.Serializable;
+
+public class PrevCourse{
 	private Course course;
 	private Course prevCourse;
 	public PrevCourse() {
