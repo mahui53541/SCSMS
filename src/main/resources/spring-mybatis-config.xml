@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://mybatis.org/schema/mybatis-spring
+                        http://mybatis.org/schema/mybatis-spring.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+    <!-- mybatis:scan会扫描com.github.mahui53541.blog.mapper包里的所有接口当作Spring的bean配置，之后可以进行依赖注入-->
+    <mybatis:scan base-package="com.github.mahui53541.scsms.dao"/>
+    <!--加载配置源-->
+    <context:property-override location="classpath*:sqlite-db.properties"/>
+    <!-- 配置c3p0数据源 -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"/>
+
+    <!-- 配置SqlSessionFactory，org.mybatis.spring.SqlSessionFactoryBean是Mybatis社区开发用于整合Spring的bean -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="plugins">
+            <list>
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <!-- 这里的几个配置主要演示如何使用，如果不理解，一定要去掉下面的配置 -->
+                    <property name="properties">
+                        <value>
+                            helperDialect=mysql
+                            reasonable=true
+                            supportMethodsArguments=true
+                            returnPageInfo=check
+                            params=count=countSql
+                            rowBoundsWithCount=true
+                            offsetAsPageNum=true
+                        </value>
+                    </property>
+                </bean>
+            </list>
+        </property>
+    </bean>
+</beans>
