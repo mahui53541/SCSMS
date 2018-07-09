@@ -6,6 +6,9 @@ import com.github.mahui53541.scsms.domain.Student;
 import com.github.mahui53541.scsms.domain.TranscriptEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service("selectionSectionSpecification")
 public class SelectionSectionSpecification implements Specification<Section> {
 	@Override
@@ -14,7 +17,10 @@ public class SelectionSectionSpecification implements Specification<Section> {
 		boolean ifPlan=false;//培养计划是否包含该门课程
 		boolean ifSelect=false;//是否已选该门课程
 		boolean ifPrevCan=false;//这门课是否有先修课程以及是否选过先修课程
-		for(Course course:student.getPlanOfStudy()){
+        List<Course> list=student.getPlanOfStudy();
+        if (list==null)
+            list=new ArrayList<>();
+		for(Course course:list){
 			if(course.getNumber().equals(section.getCourse().getNumber())){
 				ifPlan=true;
 				break;

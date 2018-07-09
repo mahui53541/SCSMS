@@ -2,6 +2,9 @@ package com.github.mahui53541.scsms.service.impl;
 
 import java.util.ArrayList;
 
+import com.github.mahui53541.scsms.dao.SectionDao;
+import com.github.mahui53541.scsms.dao.StudentDao;
+import com.github.mahui53541.scsms.dao.TranscriptDao;
 import com.github.mahui53541.scsms.domain.Section;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -23,17 +26,23 @@ public class SelectSectionServiceImpl implements SelectSectionService {
 	private SectionCatalog sectionCatalog;
 	@Autowired
 	private StudentCatalog studentCatalog;
+	@Autowired
+	private StudentDao studentDao;
+	@Autowired
+	private SectionDao sectionDao;
 	@Autowired  
 	private Transcript transcript;
+	@Autowired
+	private TranscriptDao transcriptDao;
 	@Override
 	public String selectSection(String ssn, int sectionNo) {
 		// TODO Auto-generated method stub
-		Section section=sectionCatalog.getMap().get(String.valueOf(sectionNo));
-		Student student=studentCatalog.getMap().get(ssn);
+		Section section=sectionDao.selectBySectionNo(sectionNo);
+		Student student=studentDao.selectBySsn(ssn);
 		
 		String result=selectionSectionSpecification.validate(student,section);
 		if(result==null){//为null代表什么否定都没有触发，可选
-			sectionCatalog.sectionAddEnrolledStudent(student,section);
+			transcriptDao.add(ssn, sectionNo);
 			studentCatalog.studentAddAttends(student,section);
 			TranscriptEntity entity=new TranscriptEntity(0.0,student,section);
 			transcript.getMap().get(ssn).add(entity);
@@ -46,14 +55,7 @@ public class SelectSectionServiceImpl implements SelectSectionService {
 	@Override
 	public ArrayList<Student> queryEnrolledStudents(int sectionNo) {
 		// TODO Auto-generated method stub
-		Section section=sectionCatalog.getMap().get(String.valueOf(sectionNo));
-		int size=section.getEnrolledStudents().size();
-		ArrayList<Student> list=new ArrayList<Student>();
-		for(int i=0;i<size;i++){
-			Student s=new Student(section.getEnrolledStudents().get(i).getSsn(),section.getEnrolledStudents().get(i).getName(),
-					section.getEnrolledStudents().get(i).getDegree(),section.getEnrolledStudents().get(i).getMajor());
-			list.add(s);
-		}
+		ArrayList<Student> list=studentDao.selectStudentBySectionNo(sectionNo);
 		return list;
 	}
 

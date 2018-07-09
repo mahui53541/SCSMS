@@ -33,7 +33,7 @@ public class SectionCatalog{
 	private SectionDao sectionDao;
 	@Autowired
 	private TranscriptDao transcriptDao;
-	@PostConstruct
+	//@PostConstruct
 	public void init(){
 		ArrayList<Section> list=load();
 		this.sectionCatalog=list;

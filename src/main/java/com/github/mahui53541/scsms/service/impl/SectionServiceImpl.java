@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.github.mahui53541.scsms.dao.SectionDao;
+import com.github.mahui53541.scsms.dao.StudentDao;
 import com.github.mahui53541.scsms.domain.Section;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,10 +17,14 @@ import com.github.mahui53541.scsms.service.SectionService;
 public class SectionServiceImpl implements SectionService {
 	@Autowired
 	private SectionCatalog sectionCatalog;
+	@Autowired
+	private SectionDao sectionDao;
+
 	@Override
 	public List<Map<String, String>> querySection() {
 		// TODO Auto-generated method stub
-		List<Section> list=sectionCatalog.getSectionCatalog();
+		List<Section> list=
+				sectionDao.load();//sectionCatalog.getSectionCatalog();
 		int size=list.size();
 		List<Map<String, String>> result=new ArrayList<Map<String, String>>();
 		for(int i=0;i<size;i++){

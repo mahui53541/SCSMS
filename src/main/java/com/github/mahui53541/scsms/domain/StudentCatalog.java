@@ -28,7 +28,7 @@ public class StudentCatalog{
 	private StudentDao studentDao;
 	@Autowired
 	private Transcript transcript;
-	@PostConstruct
+	//@PostConstruct
 	public void init(){
 		ArrayList<Student> list=load();
 		this.studentCatalog=list;
